@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Case Cading Dropdown</title>
+        <style>
+            select{
+                width: 200px;
+                font-size: 20px;
+                margin-right: 20px;
+            }
+        </style>
+       <script>
+         var categories=["select a category","Electronics","Footware","Fashion"];
+         var Footware=["select a Footware","shoe","casoles","sneakers"];
+         var Fashion=["select a Fashion","menware","kidsware","women ware"];
+         var Electronics=["select a Electronics","Mobile","TV","AC"];
+         var products=[];
+          
+         function LoadCategories(){
+            var IstCategories=document.getElementById("IstCategories");
+            for(var item of categories){
+                var option=document.createElement("option");
+                option.text=item;
+                option.value=item;
+                IstCategories.appendChild(option);
+            }
+         }
+         function LoadProducts(){
+            var IstProducts=document.getElementById("IstProducts");
+            IstProducts.innerHTML="";
+            for(var item of  products){
+                var option=document.createElement("option");
+                option.text=item;
+                option.value=item;
+                IstProducts.appendChild(option);
+            }
+         }
+         function bodyLoad(){
+            LoadCategories();
+         }
+         function CategoryChanged(){
+            var Categoryname=document.getElementById("IstCategories").value;
+             switch(Categoryname){
+                case "Footware":
+                products=Footware;
+                LoadProducts();
+                break;
+               case "Fashion":
+                products=Fashion;
+                LoadProducts();
+                break;
+               case "Electronics":
+               products=Electronics;
+               LoadProducts();
+                break;
+             }
+         }
+           
+       </script>
+    </head>
+    <body onload="bodyLoad()">
+       <div>
+        <select id="IstCategories" onchange="CategoryChanged()">
+
+        </select>
+        <select id="IstProducts">
+
+        </select>
+        <select id="IstItems">
+
+        </select>
+       </div>
+    </body>
+</html>
